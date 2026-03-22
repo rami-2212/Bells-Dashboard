@@ -1,4 +1,4 @@
-const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+const BASE_URL = process.env.REACT_APP_API_URL || 'https://bells-dashboard.onrender.com';
 
 async function fetchJSON(path, options = {}) {
   const res = await fetch(`${BASE_URL}${path}`, {
