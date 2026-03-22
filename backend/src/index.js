@@ -40,7 +40,7 @@ app.get('/health', (req, res) => {
 app.use('/api/wfs',    wfsRoutes);
 app.use('/api/poles',  polesRoutes);
 app.use('/api/iot',    iotRoutes);
-app.use('/api/ai',     alertRoutes);
+app.use('/api/ai/alerts', alertRoutes);
 
 // ─── 404 handler ─────────────────────────────────────────────────────────────
 app.use((req, res) => {
