@@ -1,0 +1,129 @@
+/* ============================================================
+   Smart Road GIS Dashboard - Global Styles
+   Waterberg District, South Africa
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-primary:    #0d1117;
+  --bg-secondary:  #161b22;
+  --bg-card:       #1c2333;
+  --bg-hover:      #21262d;
+  --border:        #30363d;
+  --text-primary:  #e6edf3;
+  --text-secondary:#8b949e;
+  --text-muted:    #6e7681;
+
+  /* DPMBM Status Colors */
+  --status-design:   #9ca3af;  /* Gray   */
+  --status-plan:     #3b82f6;  /* Blue   */
+  --status-manage:   #eab308;  /* Yellow */
+  --status-build:    #f97316;  /* Orange */
+  --status-maintain: #22c55e;  /* Green  */
+
+  /* Alert colors */
+  --alert-critical: #ef4444;
+  --alert-high:     #f97316;
+  --alert-medium:   #eab308;
+  --alert-low:      #22c55e;
+
+  --accent:    #58a6ff;
+  --success:   #3fb950;
+  --warning:   #d29922;
+  --danger:    #f85149;
+
+  --sidebar-width: 380px;
+  --header-height: 56px;
+  --radius: 8px;
+  --radius-sm: 4px;
+  --shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Leaflet dark mode override */
+.leaflet-container {
+  background: #1a2332 !important;
+  font-family: inherit;
+}
+
+.leaflet-control-zoom a {
+  background: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border) !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow) !important;
+}
+
+.leaflet-popup-tip {
+  background: var(--bg-card) !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* Animations */
+@keyframes flash-red {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+  50%       { box-shadow: 0 0 0 12px rgba(239, 68, 68, 0); }
+  25%       { box-shadow: 0 0 8px 4px rgba(239, 68, 68, 0.9); }
+  75%       { box-shadow: 0 0 8px 4px rgba(239, 68, 68, 0.9); }
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(1);   opacity: 1; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Utility */
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: opacity 0.15s;
+}
+.btn:hover { opacity: 0.85; }
+.btn-primary   { background: var(--accent);   color: #fff; }
+.btn-danger    { background: var(--danger);   color: #fff; }
+.btn-success   { background: var(--success);  color: #fff; }
+.btn-warning   { background: var(--warning);  color: #fff; }
+.btn-secondary { background: var(--bg-hover); color: var(--text-primary); border: 1px solid var(--border); }

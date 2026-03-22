@@ -1,0 +1,70 @@
+version: '3.9'
+
+services:
+  # ── PostgreSQL + PostGIS ──────────────────────────────────────────────────
+  db:
+    image: postgis/postgis:16-3.4
+    container_name: smart-road-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB:       smart_road_gis
+      POSTGRES_USER:     smart_road_user
+      POSTGRES_PASSWORD: smart_road_pass_2024
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./database/migrations:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U smart_road_user -d smart_road_gis"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── Backend API ───────────────────────────────────────────────────────────
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: smart-road-backend
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      NODE_ENV:     production
+      PORT:         3001
+      DB_HOST:      db
+      DB_PORT:      5432
+      DB_NAME:      smart_road_gis
+      DB_USER:      smart_road_user
+      DB_PASSWORD:  smart_road_pass_2024
+      CORS_ORIGIN:  http://localhost:3000
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./backend:/app
+      - ./database:/database
+      - /app/node_modules
+
+  # ── React Frontend ────────────────────────────────────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: smart-road-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    environment:
+      REACT_APP_API_URL: http://localhost:3001
+      REACT_APP_WS_URL:  ws://localhost:3001/ws
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
+volumes:
+  pgdata:
+    driver: local

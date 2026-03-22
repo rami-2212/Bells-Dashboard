@@ -1,0 +1,217 @@
+.poles-sidebar {
+  width: var(--sidebar-width);
+  background: var(--bg-secondary);
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  flex-shrink: 0;
+  animation: slideIn 0.25s ease;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+  gap: 8px;
+  position: sticky;
+  top: 0;
+  background: var(--bg-secondary);
+  z-index: 10;
+}
+
+.sidebar-title {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.asset-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.sidebar-title h2 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.2;
+}
+
+.segment-badge {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.close-btn:hover { background: var(--bg-hover); color: var(--text-primary); }
+
+/* Sections */
+.dpmbm-section,
+.spec-section,
+.telemetry-live-section,
+.charts-section {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* DPMBM */
+.dpmbm-status-display {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dpmbm-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  align-self: flex-start;
+}
+
+.dpmbm-flow {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex-wrap: wrap;
+}
+
+.flow-step {
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: var(--bg-card);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+.flow-step.active {
+  background: color-mix(in srgb, var(--step-color) 15%, transparent);
+  border-color: color-mix(in srgb, var(--step-color) 40%, transparent);
+  color: var(--step-color);
+  font-weight: 600;
+}
+
+.flow-arrow { color: var(--text-muted); font-size: 10px; }
+
+.transition-btn {
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid;
+  transition: background 0.15s;
+  align-self: flex-start;
+}
+
+.transition-btn:hover { background: rgba(255,255,255,0.05); }
+.transition-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Specs */
+.spec-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.spec-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.spec-key {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.spec-val {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.spec-highlight { color: var(--accent); }
+
+/* Telemetry live */
+.op-status-badge {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.telemetry-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.tel-metric {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 8px 6px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tel-val {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.tel-key {
+  font-size: 9px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+/* Charts */
+.chart-wrapper {
+  height: 120px;
+  margin-bottom: 10px;
+}
+
+.loading-text { color: var(--text-muted); font-size: 13px; text-align: center; padding: 12px; }
+.error-text   { color: var(--danger);     font-size: 12px; text-align: center; padding: 8px; }
+.no-data      { color: var(--text-muted); font-size: 12px; text-align: center; padding: 12px; }

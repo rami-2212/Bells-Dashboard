@@ -1,0 +1,222 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 16px;
+  animation: fadeIn 0.2s ease;
+}
+
+.incident-modal {
+  background: var(--bg-secondary);
+  border: 1px solid var(--alert-accent, #ef4444);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.6), 0 0 0 1px var(--alert-accent, #ef4444);
+  animation: fadeIn 0.2s ease;
+}
+
+/* Header */
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--alert-accent, #ef4444) 8%, var(--bg-secondary));
+}
+
+.modal-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.alert-type-icon { font-size: 28px; }
+
+.modal-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.modal-alert-type {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.modal-header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.severity-badge {
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.severity-critical { background: rgba(239,68,68,0.2);  color: #ef4444; }
+.severity-high     { background: rgba(249,115,22,0.2); color: #f97316; }
+.severity-medium   { background: rgba(234,179,8,0.2);  color: #eab308; }
+.severity-low      { background: rgba(34,197,94,0.2);  color: #22c55e; }
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px 7px;
+  border-radius: 4px;
+}
+.modal-close-btn:hover { background: var(--bg-hover); color: var(--text-primary); }
+
+/* Alert details */
+.alert-details {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.detail-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.detail-key {
+  font-size: 11px;
+  color: var(--text-muted);
+  min-width: 80px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.detail-val {
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+.detail-val.mono { font-family: monospace; font-size: 11px; }
+
+/* SOP */
+.sop-section {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sop-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.sop-text {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+}
+
+/* Dispatch */
+.dispatch-section {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.dispatch-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.dispatch-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dispatch-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s;
+  width: 100%;
+}
+
+.dispatch-btn:hover:not(:disabled) {
+  background: var(--bg-hover);
+  border-color: var(--svc-color, var(--border));
+}
+
+.dispatch-btn.dispatched {
+  background: color-mix(in srgb, var(--svc-color) 10%, var(--bg-card));
+}
+
+.dispatch-btn:disabled { cursor: not-allowed; opacity: 0.7; }
+
+.dispatch-icon { font-size: 22px; flex-shrink: 0; }
+
+.dispatch-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.dispatch-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.dispatch-desc {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* Actions */
+.modal-actions {
+  padding: 14px 20px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.ack-btn { flex: 1; padding: 10px; font-size: 14px; }
+
+.acknowledged-msg {
+  color: var(--success);
+  font-size: 14px;
+  font-weight: 600;
+  flex: 1;
+  text-align: center;
+}
