@@ -4,7 +4,7 @@
   "description": "Smart Road Infrastructure Backend API - Waterberg District",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/db/migrate.js && node src/index.js",
+    "start": "node src/db/migrate.js && node src/db/seed.js && node src/index.js",
     "start:app": "node src/index.js",
     "dev": "nodemon src/index.js",
     "db:migrate": "node src/db/migrate.js",

@@ -45,7 +45,8 @@ VALUES
   ('UIR-03', 'Thabazimbi Town Ring Road',            9.1, -24.59,  27.40, -24.61, 27.44),
   ('UIR-04', 'Bela-Bela Urban District Route',      11.2, -24.89,  28.29, -24.87, 28.33),
   ('UIR-05', 'Vaalwater Main Street Circuit',        5.4, -24.72,  28.44, -24.74, 28.47),
-  ('UIR-06', 'Mookgophong Urban Road Network',       7.8, -24.57,  28.95, -24.55, 28.92);
+  ('UIR-06', 'Mookgophong Urban Road Network',       7.8, -24.57,  28.95, -24.55, 28.92)
+ON CONFLICT (segment_id) DO NOTHING;
 
 -- ============================================================
 -- Seed sample poles (subset for demonstration)
@@ -78,7 +79,8 @@ VALUES
   ('PA-UIR03-001', 'UIR-03', ST_SetSRID(ST_MakePoint(27.40, -24.59), 4326),  6.0, 'FC6',   'AURA 50W',  'SS4',   'Manage'),
   ('PA-UIR04-001', 'UIR-04', ST_SetSRID(ST_MakePoint(28.29, -24.89), 4326),  8.0, 'FC8',   'AURA 60W',  'SS7',   'Plan'),
   ('PA-UIR05-001', 'UIR-05', ST_SetSRID(ST_MakePoint(28.44, -24.72), 4326),  6.0, 'FC6',   'AURA 40W',  'SS3',   'Design'),
-  ('PA-UIR06-001', 'UIR-06', ST_SetSRID(ST_MakePoint(28.95, -24.57), 4326),  6.0, 'FC6',   'AURA 50W',  'P-URB', 'Maintain');
+  ('PA-UIR06-001', 'UIR-06', ST_SetSRID(ST_MakePoint(28.95, -24.57), 4326),  6.0, 'FC6',   'AURA 50W',  'P-URB', 'Maintain')
+ON CONFLICT (asset_id) DO NOTHING;
 
 -- Seed IoT Telemetry (latest readings per pole)
 INSERT INTO iot_telemetry (asset_id, voltage_reading, current_monitoring, energy_consumption, operational_status, battery_level, solar_irradiance, temperature_c)
@@ -102,4 +104,5 @@ VALUES
   ('PA-UIR03-001', 229.7,  0.2179, 0.0500, 'fault',        45.3, 720.0, 32.6),
   ('PA-UIR04-001', 230.2,  0.2609, 0.0600, 'online',       86.7, 808.0, 29.4),
   ('PA-UIR05-001', 227.9,  0.1756, 0.0400, 'online',       79.5, 792.0, 30.8),
-  ('PA-UIR06-001', 231.0,  0.2174, 0.0500, 'online',       91.0, 821.0, 28.5);
+  ('PA-UIR06-001', 231.0,  0.2174, 0.0500, 'online',       91.0, 821.0, 28.5)
+ON CONFLICT DO NOTHING;
